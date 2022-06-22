@@ -3,4 +3,4 @@
 mkdir jpa  
 cd jpa  
 
-git clone https://github.com/hadfoo/epsi-nantes-b3-jpa.git
+git clone https://github.com/hadfoo/epsi-rennes-b3-jpa.git
