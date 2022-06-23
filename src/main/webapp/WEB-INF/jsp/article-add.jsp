@@ -3,20 +3,24 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Création d'un article</title>
+	<title>Ajout d'un article</title>
 </head>
 <body>
-<h1>Création d'un article</h1>
+<h1>Ajout d'un article</h1>
+<div><a href="/">Accueil</a></div>
 <form action="/article/add" method="post">
 	<div>
 		<label for="code">Code article</label>
 		<input id="code" name="code">
 	</div>
 	<div>
-		<label for="name">Libellé de l'article</label>
-		<input id="name" name="name">
+		<label for="libelle">Libellé de l'article</label>
+		<input id="libelle" name="libelle">
 	</div>
-	<div><button>Créer l'article</button></div>
+	<div>
+		<input type="hidden" name="fournisseur.id" value="${fournisseur}">
+		<button>Ajouter l'article</button>
+	</div>
 </form>
 </body>
 </html>

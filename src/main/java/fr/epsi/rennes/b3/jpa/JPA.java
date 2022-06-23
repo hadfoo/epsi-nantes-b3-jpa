@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.security.reactive.ReactiveSecurity
 @SpringBootApplication(
 		scanBasePackages = "fr.epsi.rennes.b3.jpa",
 		exclude = ReactiveSecurityAutoConfiguration.class)
-public class Application {
+public class JPA {
 	
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class);
+		SpringApplication.run(JPA.class);
 	}
 
 }
