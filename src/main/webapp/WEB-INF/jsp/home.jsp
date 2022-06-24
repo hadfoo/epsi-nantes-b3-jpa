@@ -16,6 +16,7 @@
 		<div>
 			<a href="/article/${article.code}">
 				<c:out value="${article.name}"/>
+				(<c:out value="${article.informations.numeroLot}"/>)
 			</a>
 		</div>
 	</c:forEach>

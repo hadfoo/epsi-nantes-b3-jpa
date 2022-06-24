@@ -18,6 +18,7 @@ public class ArticleController {
 	
 	@GetMapping("/")
 	public String home(Model model) {
+		model.addAttribute("articles", articleService.getList());
 		return "home";
 	}
 	
@@ -33,6 +34,7 @@ public class ArticleController {
 	
 	@PostMapping("/article/add")
 	public String add(Article article) {
+		articleService.ajouter(article);
 		return "redirect:/";
 	}
 

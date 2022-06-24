@@ -1,10 +1,13 @@
 package fr.epsi.rennes.b3.jpa.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +22,10 @@ public class Article {
 	private String code;
 	
 	private String name;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "informations_id")
+	private ArticleInformations informations;
 	
 	public Long getId() {
 		return id;
@@ -37,6 +44,12 @@ public class Article {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public ArticleInformations getInformations() {
+		return informations;
+	}
+	public void setInformations(ArticleInformations informations) {
+		this.informations = informations;
 	}
 	
 }
