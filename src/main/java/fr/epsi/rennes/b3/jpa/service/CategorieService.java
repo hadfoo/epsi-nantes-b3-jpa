@@ -8,23 +8,23 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import fr.epsi.rennes.b3.jpa.entity.Article;
+import fr.epsi.rennes.b3.jpa.entity.Categorie;
 
 @Service
-public class ArticleService {
+public class CategorieService {
 	
 	@PersistenceContext
 	private EntityManager em;
 	
 	@Transactional
-	public void ajouter(Article article) {
-		em.persist(article);
+	public List<Categorie> getList() {
+		String query = "select c from Categorie c";
+		return em.createQuery(query, Categorie.class).getResultList();
 	}
 	
 	@Transactional
-	public List<Article> getList() {
-		String jpql = "select a from Article a";
-		return em.createQuery(jpql, Article.class).getResultList();
+	public void ajouter(Categorie categorie) {
+		em.persist(categorie);
 	}
-	
+
 }

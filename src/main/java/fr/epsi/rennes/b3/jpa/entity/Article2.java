@@ -1,19 +1,20 @@
 package fr.epsi.rennes.b3.jpa.entity;
 
-import javax.persistence.CascadeType;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "article")
-public class Article {
+@Table(name = "article2")
+public class Article2 {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -24,13 +25,12 @@ public class Article {
 	
 	private String name;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "informations_id")
-	private ArticleInformations informations;
-	
-	@ManyToOne
-	@JoinColumn(name = "categorie_id")
-	private Categorie categorie;
+	@ManyToMany
+	@JoinTable(
+			name = "article_categorie_association",
+			joinColumns = @JoinColumn(name = "article_id"),
+			inverseJoinColumns = @JoinColumn(name = "categorie_id"))
+	private List<Categorie2> categories;
 	
 	public Long getId() {
 		return id;
@@ -50,17 +50,11 @@ public class Article {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public ArticleInformations getInformations() {
-		return informations;
+	public List<Categorie2> getCategories() {
+		return categories;
 	}
-	public void setInformations(ArticleInformations informations) {
-		this.informations = informations;
-	}
-	public Categorie getCategorie() {
-		return categorie;
-	}
-	public void setCategorie(Categorie categorie) {
-		this.categorie = categorie;
+	public void setCategories(List<Categorie2> categories) {
+		this.categories = categories;
 	}
 	
 }

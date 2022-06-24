@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import fr.epsi.rennes.b3.jpa.entity.Article;
 import fr.epsi.rennes.b3.jpa.service.ArticleService;
+import fr.epsi.rennes.b3.jpa.service.CategorieService;
 
 @Controller
 public class ArticleController {
 	
 	@Autowired
 	private ArticleService articleService;
+	
+	@Autowired
+	private CategorieService categorieService;
 	
 	@GetMapping("/")
 	public String home(Model model) {
@@ -29,6 +33,7 @@ public class ArticleController {
 	
 	@GetMapping("/article/add")
 	public String add(Model model) {
+		model.addAttribute("categories", categorieService.getList());
 		return "article-add";
 	}
 	

@@ -3,16 +3,17 @@ package fr.epsi.rennes.b3.jpa.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "categorie")
-public class Categorie {
+@Table(name = "categorie2")
+public class Categorie2 {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -21,8 +22,12 @@ public class Categorie {
 	private String code;
 	private String libelle;
 	
-	@OneToMany(mappedBy = "categorie", fetch = FetchType.LAZY)
-	private List<Article> articles;
+	@ManyToMany
+	@JoinTable(
+			name = "article_categorie_association",
+			joinColumns = @JoinColumn(name = "categorie_id"),
+			inverseJoinColumns = @JoinColumn(name = "article_id"))
+	private List<Article2> articles;
 	
 	public Long getId() {
 		return id;
@@ -42,10 +47,10 @@ public class Categorie {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public List<Article> getArticles() {
+	public List<Article2> getArticles() {
 		return articles;
 	}
-	public void setArticles(List<Article> articles) {
+	public void setArticles(List<Article2> articles) {
 		this.articles = articles;
 	}
 

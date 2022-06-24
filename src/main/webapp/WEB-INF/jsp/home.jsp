@@ -16,7 +16,8 @@
 		<div>
 			<a href="/article/${article.code}">
 				<c:out value="${article.name}"/>
-				(<c:out value="${article.informations.numeroLot}"/>)
+				(<c:out value="${article.informations.numeroLot}"/>,
+				<c:out value="${article.categorie.libelle}"/>)
 			</a>
 		</div>
 	</c:forEach>
