@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,6 +27,10 @@ public class Article {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "informations_id")
 	private ArticleInformations informations;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "categorie_id")
+	private Categorie categorie;
 	
 	public Long getId() {
 		return id;
@@ -50,6 +55,12 @@ public class Article {
 	}
 	public void setInformations(ArticleInformations informations) {
 		this.informations = informations;
+	}
+	public Categorie getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
 	
 }
